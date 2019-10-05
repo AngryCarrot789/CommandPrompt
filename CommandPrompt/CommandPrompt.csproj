@@ -55,6 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommandPromptFiles\CommandHolder.cs" />
+    <Compile Include="CommandPromptFiles\CommandLine.cs" />
+    <Compile Include="CommandPromptFiles\CommandResult.cs" />
+    <Compile Include="CommandPromptFiles\ViewModels\CommandPromptViewModel.cs" />
+    <Compile Include="CommandPromptFiles\Views\CommandPromptControl.xaml.cs">
+      <DependentUpon>CommandPromptControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Command.cs" />
+    <Compile Include="Utilities\CommandParam.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\WindowPreferences.cs" />
+    <Page Include="CommandPromptFiles\Views\CommandPromptControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
