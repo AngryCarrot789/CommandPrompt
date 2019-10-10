@@ -8,35 +8,22 @@ namespace CommandPrompt.CommandPromptFiles
 {
     public class CommandLine
     {
-        public enum CommandsList
+        public void Exit()         => Environment.Exit(0);
+        public void Exit(int code) => Environment.Exit(code);
+
+        public string[] SysInfo()
         {
-            Help,
+            List<string> output = new List<string>();
+            string[] drives = Environment.GetLogicalDrives();
+            output.Add("Windows 10");
+            output.Add(Environment.Is64BitOperatingSystem ? "64 Bit" : "probably 32 bit");
+            output.Add($"{drives.Count()} Logical drives; they are:");
+            foreach (string drive in drives)
+                output.Add($"- {drive}");
+            return output.ToArray();
         }
 
-        public static CommandResult MatchCommand(string command)
-        {
-            string inCommand = command.ToLower();
-            CommandResult cr = new CommandResult();
-            switch (inCommand)
-            {
-                case "help":
-                {
-                    //foreach(string val in Enum.GetNames(typeof(CommandsList)))
-                    //cr.AddTextLine($"{val} - ")
-
-                    cr.AddTextLine("Help - Lists all Commands");
-                    cr.AddTextLine("Move(loc1)#(loc2) - Moves a file from loc1 to loc2");
-
-                } break;
-
-                case var e when inCommand.Substring(0, 4) == "move":
-                {
-
-                } break;
-
-                case "close": break;
-            }
-            return cr;
-        }
+        public Action<string> ConsoleWrite { get; set; }
+        public Action<string> ConsoleWriteLine { get; set; }
     }
 }

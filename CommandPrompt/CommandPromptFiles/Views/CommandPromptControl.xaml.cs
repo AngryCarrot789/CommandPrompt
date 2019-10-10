@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommandPromptFiles.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace CommandPromptFiles.CommandPrompt.Views
     /// </summary>
     public partial class CommandPromptControl : UserControl
     {
+        public Action CloseTabCallback { get; set; }
+        public CommandPromptViewModel ViewModel { get; set; }
         public CommandPromptControl()
         {
             InitializeComponent();
+            ViewModel = new CommandPromptViewModel(this);
+            ViewModel.CloseTabCallback = closeTabCallback;
+            this.DataContext = ViewModel;
+            iTextBox.Focus();
+        }
+
+        private void closeTabCallback()
+        {
+            CloseTabCallback?.Invoke();
         }
     }
 }

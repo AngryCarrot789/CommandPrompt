@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommandPrompt.ViewModels;
+using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,14 @@ namespace CommandPrompt
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
+        public MainViewModel ViewModel { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            ViewModel = new MainViewModel(this);
+            this.DataContext = ViewModel;
         }
     }
 }

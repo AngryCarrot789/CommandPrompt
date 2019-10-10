@@ -1,12 +1,34 @@
-﻿<Window x:Class="CommandPrompt.MainWindow"
+﻿<Controls:MetroWindow x:Class="CommandPrompt.MainWindow"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommandPrompt"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:views="clr-namespace:CommandPromptFiles.CommandPrompt.Views"
+        xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+        xmlns:viewmodels="clr-namespace:CommandPrompt.ViewModels"
+        mc:Ignorable="d" ResizeMode="CanResizeWithGrip"
+        Title="{x:Static local:WindowPreferences.WindowTitle}" 
+        Height="576" Width="1024" 
+        NonActiveBorderBrush="#FF323232" 
+        NonActiveWindowTitleBrush="#FF323232"
+        WindowTitleBrush="#FF252525" 
+        BorderBrush="#FF222222" 
+        Background="#FF222222"
+        BorderThickness="1" 
+        GlowBrush="#FF232323" NonActiveGlowBrush="#FF323232"
+        >
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="New Tab" Command="{Binding NewTabCommand}"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.LeftWindowCommands>
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top"/>
+        <dragablz:TabablzControl ShowDefaultCloseButton="True" BorderBrush="#FF252525"
+                                 ItemsSource="{Binding Tabs, UpdateSourceTrigger=PropertyChanged}"
+                                 SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}">
+        </dragablz:TabablzControl>
     </Grid>
-</Window>
+</Controls:MetroWindow>

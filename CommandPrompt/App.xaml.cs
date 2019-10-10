@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommandPrompt.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace CommandPrompt
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

@@ -1,24 +1,28 @@
-﻿<UserControl x:Class="CommandPromptFiles.CommandPrompt.Views.CommandPromptControl"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CommandPromptFiles.CommandPrompt.Views.CommandPromptControl"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBox Margin="0,0,0,37" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+    <Grid Background="{Binding BackgroundColour, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Margin="10,10,10,47" IsReadOnly="True" IsReadOnlyCaretVisible="False" FontFamily="Consolas" BorderBrush="#FF232323" 
+                 mah:ControlsHelper.FocusBorderBrush="#FF282828" mah:ControlsHelper.MouseOverBorderBrush="#FF282828" Background="#FF1F1F1F"
                  Text="{Binding OutputBufferText, UpdateSourceTrigger=PropertyChanged}"
-                 FontSize="{Binding FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+                 FontSize="{Binding OutputFontSize, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBox VerticalAlignment="Bottom" Height="32" Margin="0,0,145,0"
+        <TextBox x:Name="iTextBox" VerticalAlignment="Bottom" Height="32" Margin="10,0,124,10" Padding="2" FontFamily="Consolas" BorderBrush="#FF232323" 
+                 mah:ControlsHelper.FocusBorderBrush="#FF282828" mah:ControlsHelper.MouseOverBorderBrush="#FF282828" Focusable="True" Background="#FF1F1F1F"
                  Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}"
-                 FontSize="{Binding FontSize, UpdateSourceTrigger=PropertyChanged}">
+                 FontSize="{Binding InputFontSize, UpdateSourceTrigger=PropertyChanged}">
             <TextBox.InputBindings>
                 <KeyBinding Command="{Binding SendCommandCommand}" Key="Enter"/>
             </TextBox.InputBindings>
         </TextBox>
-        
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="140" Height="32" Content="Send Command"
-                Command="{Binding SendCommandCommand}"/>
+
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="109" Height="32" Content="Stuff" Focusable="False"
+                Command="{Binding SendCommandCommand}" Margin="0,0,10,10" BorderBrush="#FF232323" mah:ButtonHelper.CornerRadius="1" Background="#FF1D1D1D"/>
     </Grid>
 </UserControl>
